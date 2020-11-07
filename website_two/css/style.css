@@ -20,6 +20,14 @@ nav{
     padding: 2vh 3vw;
     background-color: rgba(255,255,255,0.9);
     z-index:+3;
+    transition: height 0.5s;
+}
+#btn-menu{
+    float:right;
+    padding: 5px 0px;
+    font-size: 25px;
+    visibility: hidden;
+    cursor:pointer;
 }
 #image{
     width:60px;
@@ -195,18 +203,26 @@ footer{
     #layer2{
         height:30vh;
     }
+    #btn-menu{
+        visibility: visible;
+    }
+    #menu-bar{
+        visibility:hidden;
+        flex-direction: column;
+    }
 }
 @media(min-width:1024px){
-    #layer1 p{
-        font-size: 22px;
-    }
     .container p{
         font-size: 25px;
     }
     h3{
         font-size: xx-large;
     }
-
+}
+@media(min-width:1154px){
+    #layer1 p{
+        font-size: 22px;
+    }
 }
 @media (max-width:475px){
     p{
@@ -240,8 +256,6 @@ footer{
         align-items: center;
         height:90px;
         padding: 0px;
-        transition-property: all;
-        transition-duration: 1s;
     }
     header{
         height:80vh;

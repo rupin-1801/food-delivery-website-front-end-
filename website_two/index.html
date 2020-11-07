@@ -6,19 +6,21 @@
     <title>Food Delivery Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://use.fontawesome.com/3572e2875e.js"></script>
 </head>
-<body>
+<body id ="body">
     <header>
         <nav id="navbar">
             <div id="logo">
                 <img src="images/logo.png" id = "image"/>
             </div>
-            <ul class="menu">
+            <ul class="menu" id="menu-bar">
                 <li class="item"><a href="#">Home</a></li>
                 <li class="item"><a href="#">Services</a></li>
                 <li class="item"><a href="#">About</a></li>
                 <li class="item"><a href="#">Contact Us</a></li>
             </ul>
+            <span id="btn-menu" onclick="expand()"><i class="fa fa-bars" aria-hidden="true"></i></span>
         </nav>
         <div class="container">
             <h3>Welcome to my website</h3>
@@ -74,5 +76,23 @@
     <footer>
         copyright &copy; 2020 food delivery.com 
     </footer>
+    <script>
+        var flag = 1;
+        function expand(){
+            if(flag == 1){
+            // document.getElementById("btn-menu").style.visibility="hidden";
+            document.getElementById("menu-bar").style.visibility="visible";
+            document.getElementById("navbar").style.height="35vh";
+            
+            flag = 0;
+            }
+            else{
+                flag = 1;
+                // document.getElementById("btn-menu").style.visibility="visible";
+                document.getElementById("menu-bar").style.visibility="hidden";
+                document.getElementById("navbar").style.height="70px";
+            }
+        }
+    </script>
 </body>
 </html>

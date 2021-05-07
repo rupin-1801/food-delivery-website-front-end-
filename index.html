@@ -9,24 +9,28 @@
     <script src="https://use.fontawesome.com/3572e2875e.js"></script>
 </head>
 <body id ="body">
-    <header>
+    <header id ="header">
         <nav id="navbar">
             <div id="logo">
                 <img src="images/logo.png" id = "image"/>
             </div>
+            <span id="btn-menu" onclick="expand()"><i class="fa fa-bars" aria-hidden="true"></i></span>
             <ul class="menu" id="menu-bar">
                 <li class="item"><a href="#">Home</a></li>
                 <li class="item"><a href="#">Services</a></li>
                 <li class="item"><a href="#">About</a></li>
                 <li class="item"><a href="#">Contact Us</a></li>
             </ul>
-            <span id="btn-menu" onclick="expand()"><i class="fa fa-bars" aria-hidden="true"></i></span>
         </nav>
+        <div class="content">
+        <i class="arrow fa fa-chevron-left" aria-hidden="true" onclick="dec(0)"></i>
         <div class="container">
-            <h3>Welcome to my website</h3>
+            <h3 id = "web-head">Welcome to my website</h3>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat qui omnis porro, doloribus ipsum quis inventore cupiditate sint. Explicabo sint expedita aspernatur qui architecto? Saepe qui et delectus sunt porro iste magnam corrupti voluptatum distinctio cum? Corporis facilis assumenda voluptates.</p>
             <button id="btn">Order Now</button>
         </div>
+        <i class="arrow fa fa-chevron-right" aria-hidden="true" onclick="dec(1)"></i>
+    </div>
     </header>
     <section>
         <article class="layer" id="layer1">
@@ -78,19 +82,58 @@
     </footer>
     <script>
         var flag = 1;
+        let text = ["website.","food.","shop."];
+        let element = "";
+        var i = 0, j = 0;
+        function dec(value){
+            if(value == 0){
+                i = (i > 0) ? i-1 : 2;
+            }
+            else i = (i+1) % 3;
+            Switch();
+            // console.log(i);
+        }
+        function Switch(){
+            // document.getElementById("header").style.animation=``;
+            document.getElementById("header").style.background=`linear-gradient(90deg, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.3)), url("images/bg-`+(i+1)+`.jpg") no-repeat`;
+            document.getElementById("header").style.backgroundSize="cover";
+            j = 0;
+            element = "";
+        }
+        setInterval(() => {
+            if(document.getElementById("header").clientWidth + 17 > 500) {
+                document.getElementById("navbar").style.height="70px";
+                document.getElementById("menu-bar").classList.add("menu");
+                document.getElementById("menu-bar").classList.remove("menu-hidden");
+            }
+            element = element + text[i][j];
+            console.log(document.getElementById("header").clientWidth + 17);
+            document.getElementById("web-head").innerHTML="Welcome to my " + element;
+            if(j == text[i].length-1){
+                i = (i+1) % 3;
+                Switch();
+            }
+            else{
+                j = (j+1) % text[i].length;
+            }
+        }, 300);
         function expand(){
             if(flag == 1){
             // document.getElementById("btn-menu").style.visibility="hidden";
-            document.getElementById("menu-bar").style.visibility="visible";
             document.getElementById("navbar").style.height="35vh";
+            setTimeout(() => {
+                document.getElementById("menu-bar").classList.add("menu-hidden");
+                document.getElementById("menu-bar").classList.remove("menu");
+            }, 500);
             
             flag = 0;
             }
             else{
                 flag = 1;
                 // document.getElementById("btn-menu").style.visibility="visible";
-                document.getElementById("menu-bar").style.visibility="hidden";
                 document.getElementById("navbar").style.height="70px";
+                document.getElementById("menu-bar").classList.add("menu");
+                document.getElementById("menu-bar").classList.remove("menu-hidden");
             }
         }
     </script>
